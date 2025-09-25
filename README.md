@@ -1,23 +1,21 @@
 # PACE: PHYSICS INFORMED UNCERTAINTY AWARE CLIMATE EMULATOR
 
-![architecture](images/pacer.pdf)
+![architecture](images/pacer.png)
 
 # Abstract:
 Climate models serve as critical tools for evaluating the effects of climate change
-and projecting future climate scenarios. However, the reliance on numerical sim-
-ulations of physical equations renders them computationally intensive and in-
-efficient. While deep learning methodologies have made significant progress
-in weather forecasting, they are still unstable for longer roll-out climate emu-
-lation task. Here, we propose PACER, a relatively lightweight 2.1M parame-
-ter Physics Informed Uncertainty Aware Climate EmulatoR. PACER is trained
-across is trained across varying spatial resolutions and climate models, enabling
-faithful and stable emulation of temperature fields at multiple surface levels over
-a 10 year horizon. We propose an auto-regressive ODE–SDE framework for cli-
-mate emulation that integrates the fundamental physical law of advection, while
-being trained under a negative log-likelihood objective to enable principled un-
-certainty quantification of stochastic variability. We show PACER’s emulation
-performance across 20 climate models outperforming relevant baselines and ad-
-vancing towards explicit physics infusion in ML emulator. 
+and projecting future climate scenarios. However, the reliance on numerical simulations 
+of physical equations renders them computationally intensive and inefficient. While 
+deep learning methodologies have made significant progress in weather forecasting, they 
+are still unstable for longer roll-out climate emulation task. Here, we propose PACER, a 
+relatively lightweight 2.1M parameter Physics Informed Uncertainty Aware Climate EmulatoR. 
+PACER is trained across is trained across varying spatial resolutions and climate models, 
+enabling faithful and stable emulation of temperature fields at multiple surface levels over
+a 10 year horizon. We propose an auto-regressive ODE–SDE framework for climate emulation 
+that integrates the fundamental physical law of advection, while being trained under a 
+negative log-likelihood objective to enable principled uncertainty quantification of 
+stochastic variability. We show PACER’s emulation performance across 20 climate models 
+outperforming relevant baselines and advancing towards explicit physics infusion in ML emulator. 
 
 # Requirements:
 * python=3.10
