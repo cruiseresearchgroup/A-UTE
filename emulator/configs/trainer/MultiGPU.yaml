@@ -1,0 +1,16 @@
+_target_: pytorch_lightning.Trainer
+
+strategy: "ddp"
+accelerator: "gpu"
+devices: [7]
+precision: 16
+
+min_epochs: 1
+max_epochs: 5
+
+gradient_clip_val: 1.0
+# accumulate_grad_batches: 4  # This accumulates gradients over 4 batches before performing the backward pass
+
+
+# number of validation steps to execute at the beginning of the training
+num_sanity_val_steps: 0
