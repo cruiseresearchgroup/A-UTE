@@ -1,21 +1,9 @@
-# PACE: PHYSICS INFORMED UNCERTAINTY AWARE CLIMATE EMULATOR
+# A-UTE: Advection Informed, Uncertainty Aware Temperature Emulator
 
 ![architecture](images/pacer.png)
 
 # Abstract:
-Climate models serve as critical tools for evaluating the effects of climate change
-and projecting future climate scenarios. However, the reliance on numerical simulations 
-of physical equations renders them computationally intensive and inefficient. While 
-deep learning methodologies have made significant progress in weather forecasting, they 
-are still unstable for longer roll-out climate emulation task. Here, we propose PACER, a 
-relatively lightweight 2.1M parameter Physics Informed Uncertainty Aware Climate EmulatoR. 
-PACER is trained across is trained across varying spatial resolutions and climate models, 
-enabling faithful and stable emulation of temperature fields at multiple surface levels over
-a 10 year horizon. We propose an auto-regressive ODE–SDE framework for climate emulation 
-that integrates the fundamental physical law of advection, while being trained under a 
-negative log-likelihood objective to enable principled uncertainty quantification of 
-stochastic variability. We show PACER’s emulation performance across 20 climate models 
-outperforming relevant baselines and advancing towards explicit physics infusion in ML emulator. 
+Physics-based Earth system models (ESMs) are essential for attributing climate change and generating scenario projections, yet their reliance on high-resolution numerical integration makes multi-decadal experiments expensive. In parallel, deep learning has delivered strong gains in short-range weather forecasting; however, auto-regressive roll-outs can accumulate error and become unstable when extended to decade-scale climate emulation. We introduce A-UTE: Advection Informed, Uncertainty Aware Temperature Emulator, aimed at stable multi-year emulation across heterogeneous climate models and grid resolutions. A-UTE is trained on various physics-based models at varying spatial resolutions to emulate temperature fields over a 10-year horizon. A-UTE formulates climate emulation as a forward-time stochastic dynamical system. We propose an auto-regressive ODE–SDE surrogate in which transport dynamics are constrained by an advection-consistent ODE component, while a learned neural SDE term models coarse-grained variability and cross-model discrepancy at monthly resolution. We train A-UTE under negative log-likelihood objective for principled uncertainty estimates and probabilistic evaluation. Experiments across 20 climate models show that A-UTE improves long roll-out stability and accuracy relative to relevant baselines, advancing data-driven climate emulation with explicit physical structure and uncertainty-aware predictions.
 
 # Requirements:
 * python=3.10
@@ -57,15 +45,15 @@ python scripts/download_climateset_huggingface.py
 # Setup
 1. Create virtual environment
   ```python
-  python -m venv env_pace
-  source env_pace/bin/activate
+  python -m venv env_ute
+  source env_ute/bin/activate
   pip install -r requirements.txt
   cd emulator 
   pip install -e .
   ```
 2. Set Python Path
    ```python
-   export PYTHONPATH=/home/user/PACE:$PYTHONPATH"
+   export PYTHONPATH=/home/user/UTE:$PYTHONPATH"
    ```
 4. Set Hydra for Debugging
    ```python
@@ -73,9 +61,9 @@ python scripts/download_climateset_huggingface.py
    ```
 
 # Training Single Emulator
-The main model path is /emulator/src/core/models/pace_net.py
+The main model path is /emulator/src/core/models/ute_net.py
 ```python
-python emulator/run.py experiment=single_emulator/pace_net/single_pace.yaml 
+python emulator/run.py experiment=single_emulator/ute_net/single_ute.yaml 
 ```
 
 
